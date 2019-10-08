@@ -1,13 +1,10 @@
 import base64
 import uuid
 import getpass
-import nacl.utils
-import nfc
 import nfc.snep
 import ndef
 
 from nacl.public import PrivateKey, Box
-
 
 uid = str(uuid.uuid4())
 passphrase = getpass.getpass('Passphrase: ')
@@ -24,10 +21,10 @@ encrypted = box.encrypt(passphrase.encode())
 
 print('Storing key')
 
-with open('./keys/%s.pub' %uid, 'wb') as writer:
+with open('./keys/%s.pub' % uid, 'wb') as writer:
     writer.write(bytearray(pub.encode()))
 
-with open('./keys/%s.key' %uid, 'wb') as writer:
+with open('./keys/%s.key' % uid, 'wb') as writer:
     writer.write(bytearray(encrypted))
 
 print('Disposing unnecessary data')
@@ -38,7 +35,7 @@ del pub
 print('Waiting for NFC tag')
 
 clf = nfc.ContactlessFrontend('usb')
-tag = clf.connect(rdwr={'on-connect': lambda tag: False})
+tag = clf.connect(rdwr={'on-connect': lambda t: False})
 
 print('Writing')
 
@@ -58,4 +55,3 @@ del prv
 del uid
 
 print('All done!')
-
