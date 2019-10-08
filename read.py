@@ -18,12 +18,12 @@ uid = None
 prv = None
 
 for record in tag.ndef.records:
-    if (record.name == 'touchkey:uid'):
+    if record.name == 'touchkey:uid':
         uid = record.text
-    elif (record.name == 'touchkey:prv'):
+    elif record.name == 'touchkey:prv':
         prv = PrivateKey(base64.b64decode(record.text))
 
-if (uid == None or prv == None):
+if uid == None or prv == None:
     print('Error: Invalid tag')
     exit()
 
