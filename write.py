@@ -35,7 +35,7 @@ del pub
 print('Waiting for NFC tag')
 
 clf = nfc.ContactlessFrontend('usb')
-tag = clf.connect(rdwr={'on-connect': lambda tag: False})
+tag = clf.connect(rdwr={'on-connect': lambda t: False})
 
 print('Writing')
 
