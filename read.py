@@ -1,8 +1,5 @@
 import base64
-import nacl.utils
-import nfc
 import nfc.snep
-import ndef
 import serial
 
 from nacl.public import PublicKey, PrivateKey, Box

@@ -1,8 +1,6 @@
 import base64
 import uuid
 import getpass
-import nacl.utils
-import nfc
 import nfc.snep
 import ndef
 
