@@ -23,7 +23,7 @@ for record in tag.ndef.records:
     elif record.name == 'touchkey:prv':
         prv = PrivateKey(base64.b64decode(record.text))
 
-if uid == None or prv == None:
+if uid is None or prv is None:
     print('Error: Invalid tag')
     exit()
 
