@@ -27,13 +27,13 @@ if (uid == None or prv == None):
     print('Error: Invalid tag')
     exit()
 
-print('Key ID: %s' %uid)
+print('Key ID: %s' % uid)
 print('Loading key')
 
-with open('./keys/%s.pub' %uid, 'rb') as reader:
+with open('./keys/%s.pub' % uid, 'rb') as reader:
     pub = PublicKey(reader.read())
 
-with open('./keys/%s.key' %uid, 'rb') as reader:
+with open('./keys/%s.key' % uid, 'rb') as reader:
     key = reader.read()
 
 box = Box(prv, pub)
@@ -45,8 +45,7 @@ plain = box.decrypt(key)
 print('Sending to Arduino')
 
 connection = serial.Serial('/dev/ttyS0', 9600)
-connection.write(('%s\n' %(plain.decode())).encode())
+connection.write(('%s\n' % (plain.decode())).encode())
 connection.close()
 
 print('All done!')
-

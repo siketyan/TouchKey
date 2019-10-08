@@ -8,7 +8,6 @@ import ndef
 
 from nacl.public import PrivateKey, Box
 
-
 uid = str(uuid.uuid4())
 passphrase = getpass.getpass('Passphrase: ')
 
@@ -24,10 +23,10 @@ encrypted = box.encrypt(passphrase.encode())
 
 print('Storing key')
 
-with open('./keys/%s.pub' %uid, 'wb') as writer:
+with open('./keys/%s.pub' % uid, 'wb') as writer:
     writer.write(bytearray(pub.encode()))
 
-with open('./keys/%s.key' %uid, 'wb') as writer:
+with open('./keys/%s.key' % uid, 'wb') as writer:
     writer.write(bytearray(encrypted))
 
 print('Disposing unnecessary data')
@@ -58,4 +57,3 @@ del prv
 del uid
 
 print('All done!')
-
